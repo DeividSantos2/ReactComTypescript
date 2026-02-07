@@ -1,16 +1,15 @@
-
-import './App.css'
-import ComponenteFilho from './components/ComponenteFilho'
-import Contador from './components/Contador'
-import DisplayWindowsSize from './components/DisplayWindowsSize'
-import ExemploUserEffect from './components/ExemploUserEffect'
-import Timer from './components/Timer'
-import ValorDoContexto from './components/ValorDoContexto'
-import { MeuProvider } from './contexts/MeuContexto'
-
+import "./App.css";
+import Cointainer from "./components/Cointainer";
+import ComponenteFilho from "./components/ComponenteFilho";
+import Contador from "./components/Contador";
+import DisplayWindowsSize from "./components/DisplayWindowsSize";
+import ExemploUserEffect from "./components/ExemploUserEffect";
+import PerfilDeUsuario from "./components/PerfilDeUsuario";
+import Timer from "./components/Timer";
+import ValorDoContexto from "./components/ValorDoContexto";
+import { MeuProvider } from "./contexts/MeuContexto";
 
 function App() {
-
   return (
     <>
       {/* useEffect */}
@@ -25,13 +24,20 @@ function App() {
       </MeuProvider>
 
       {/* useReduce */}
-      <Contador/>
+      <Contador />
 
       {/* Custom Hooks */}
-    <DisplayWindowsSize/>
-    
+      <DisplayWindowsSize />
+      {/* Slots e CHildren props */}
+    <Cointainer>
+        <Timer />
+    </Cointainer>
+
+    {/* Sicronizar estados com props */}
+
+    <PerfilDeUsuario/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
