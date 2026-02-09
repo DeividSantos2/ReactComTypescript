@@ -1,7 +1,7 @@
-const Task = () => {
+const Task = ({tittle}) => {
   return (
     <li>
-        <span>Task</span>
+        <span>{task.text}</span>
         <button>Remove</button>
     </li>
   )
