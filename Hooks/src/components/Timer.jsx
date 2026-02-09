@@ -11,7 +11,7 @@ const Timer = () => {
             setTimer(prevTimer => prevTimer + 1)
         }, 1000)
 
-        //limpeza de estado
+        //limpeza de estadoz
         return () => {
             clearInterval(intervalId)
         }

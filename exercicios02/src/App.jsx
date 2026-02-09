@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import './App.css'
+import NomeTitulo from './components/NomeTitulo'
 
 function App() {
 
   return (
     <>
-    
+      <NomeTitulo/>
     </>
   )
 }
