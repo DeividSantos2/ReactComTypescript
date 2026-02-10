@@ -9,6 +9,8 @@ function App() {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [priorityFilter, setPriorityFilter] = useState("all");
+
 
   // 🔥 Carregar tarefas do LocalStorage
   useEffect(() => {
@@ -77,15 +79,26 @@ function App() {
   };
 
   // 🔎 Filtrar + buscar
-  const filteredTasks = tasks
-    .filter((task) => {
-      if (filter === "completed") return task.completed;
-      if (filter === "pending") return !task.completed;
-      return true;
-    })
-    .filter((task) =>
-      task.text.toLowerCase().includes(search.toLowerCase())
-    );
+const filteredTasks = tasks
+  // filtro status
+  .filter((task) => {
+    if (filter === "completed") return task.completed;
+    if (filter === "pending") return !task.completed;
+    return true;
+  })
+
+  // filtro prioridade
+  .filter((task) => {
+    if (priorityFilter === "all") return true;
+    return task.priority === priorityFilter;
+  })
+
+
+  // busca texto
+  .filter((task) =>
+    task.text.toLowerCase().includes(search.toLowerCase())
+  );
+
 
   return (
     <div className="container">
@@ -131,6 +144,25 @@ function App() {
         <button onClick={() => setFilter("completed")}>Concluídas</button>
         <button onClick={() => setFilter("pending")}>Pendentes</button>
       </div>
+
+    <div className="priorityFilters">
+      <button onClick={() => setPriorityFilter("all")}>
+        Todas prioridades
+      </button>
+
+      <button onClick={() => setPriorityFilter("Alta")}>
+        🔴 Alta
+      </button>
+
+      <button onClick={() => setPriorityFilter("Média")}>
+        🟡 Média
+      </button>
+
+      <button onClick={() => setPriorityFilter("Baixa")}>
+        🟢 Baixa
+      </button>
+    </div>
+
 
       {/* LISTA */}
       <ul className="taskList">
