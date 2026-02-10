@@ -203,3 +203,28 @@ h1 {
     align-items: flex-start;
   }
 }
+
+.taskContent strong {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 5px;
+  transition: 0.2s;
+}
+
+.taskContent strong:hover {
+  opacity: 0.7;
+}
+
+/* INPUT DE EDIÇÃO INLINE */
+.editInput {
+  width: 100%;
+  padding: 6px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 5px;
+
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}

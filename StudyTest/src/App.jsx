@@ -134,24 +134,48 @@ function App() {
 
       {/* LISTA */}
       <ul className="taskList">
-        {filteredTasks.map((task) => (
-          <li key={task.id} className={task.completed ? "done" : ""}>
-            <div>
-              <strong>{task.text}</strong>
-              <p>Prioridade: {task.priority}</p>
-              {task.date && <p>Data: {task.date}</p>}
-            </div>
+  {filteredTasks.map((task) => (
+    <li key={task.id} className={task.completed ? "done" : ""}>
+      
+      <div className="taskContent">
+        
+        {editingId === task.id ? (
+          <input
+            autoFocus
+            className="editInput"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onBlur={() => handleSubmit(new Event("submit"))}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleSubmit(e);
+              if (e.key === "Escape") setEditingId(null);
+            }}
+          />
+        ) : (
+          <strong onClick={() => editTask(task)}>
+            {task.text}
+          </strong>
+        )}
 
-            <div className="actions">
-              <button onClick={() => toggleComplete(task.id)}>
-                ✔
-              </button>
-              <button onClick={() => editTask(task)}>✏</button>
-              <button onClick={() => deleteTask(task.id)}>❌</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+        <p>Prioridade: {task.priority}</p>
+        {task.date && <p>Data: {task.date}</p>}
+
+      </div>
+
+      <div className="actions">
+        <button onClick={() => toggleComplete(task.id)}>
+          ✔
+        </button>
+
+        <button onClick={() => deleteTask(task.id)}>
+          ❌
+        </button>
+      </div>
+
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 }
