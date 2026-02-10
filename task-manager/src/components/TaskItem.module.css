@@ -1,0 +1,248 @@
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card.concluida {
+  opacity: 0.85;
+}
+
+.card.concluida .titulo {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.card.atrasada {
+  border-left: 4px solid var(--danger);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  transition: all 0.2s;
+}
+
+.checkbox input:checked + .checkmark {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox input:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.titleBlock {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  width: 100%;
+}
+
+.prioridade {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.priorityBaixa {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+.priorityMedia {
+  background: rgba(234, 179, 8, 0.2);
+  color: #ca8a04;
+}
+
+.priorityAlta {
+  background: rgba(249, 115, 22, 0.2);
+  color: #ea580c;
+}
+
+.priorityUrgente {
+  background: rgba(239, 68, 68, 0.2);
+  color: #dc2626;
+}
+
+.categoria {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--hover-bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.status {
+  flex-shrink: 0;
+}
+
+.statusSelect {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.descricao {
+  margin: 0.75rem 0 0 2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.meta {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dataAtrasada {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.dataCriacao {
+  color: var(--text-muted);
+}
+
+.actions {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btnEdit,
+.btnDelete {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btnEdit {
+  background: var(--hover-bg);
+  color: var(--accent);
+}
+
+.btnEdit:hover {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.btnDelete {
+  background: transparent;
+  color: var(--danger);
+}
+
+.btnDelete:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.confirmDelete {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.btnConfirmYes,
+.btnConfirmNo {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btnConfirmYes {
+  background: var(--danger);
+  color: white;
+}
+
+.btnConfirmNo {
+  background: var(--hover-bg);
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .status {
+    width: 100%;
+  }
+
+  .statusSelect {
+    width: 100%;
+  }
+
+  .descricao {
+    margin-left: 0;
+  }
+}
